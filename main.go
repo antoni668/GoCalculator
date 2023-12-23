@@ -93,6 +93,11 @@ func main() {
 			return
 		}
 
+		if !isInRange(romanToArabic(num1)) || !isInRange(romanToArabic(num2)) {
+			fmt.Println("Ошибка: число выходит за пределы допустимого диапазона")
+			return
+		}
+
 		fmt.Printf("Первое число: %s\n", num1)
 		fmt.Printf("Оператор: %s\n", operator)
 		fmt.Printf("Второе число: %s\n", num2)
