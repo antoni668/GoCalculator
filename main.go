@@ -103,36 +103,37 @@ func arithmeticOperation(num1, num2 int, op string) int {
 }
 
 func main() {
-	fmt.Print("Введите строку: ")
+	for true {
+		fmt.Print("Введите строку: ")
 
-	scanner := bufio.NewScanner(os.Stdin)
-	if scanner.Scan() {
-		inputString := scanner.Text()
+		scanner := bufio.NewScanner(os.Stdin)
+		if scanner.Scan() {
+			inputString := scanner.Text()
 
-		isArabic, num1, operator, num2, err := parseInputString(inputString)
+			isArabic, num1, operator, num2, err := parseInputString(inputString)
 
-		if err != nil {
-			fmt.Println("Ошибка:", err)
-			return
-		}
-
-		if !isInRange(toArabic(num1)) || !isInRange(toArabic(num2)) {
-			fmt.Println("Ошибка: число выходит за пределы допустимого диапазона")
-			return
-		}
-
-		result := arithmeticOperation(toArabic(num1), toArabic(num2), operator)
-
-		if !isArabic {
-			if isPositive(result) {
-				fmt.Printf("Результат: %v\n", toRoman(result))
-				return
-			} else {
-				fmt.Println("Ошибка: результат меньше I")
+			if err != nil {
+				fmt.Println("Ошибка:", err)
 				return
 			}
-		}
 
-		fmt.Printf("Результат: %v\n", result)
+			if !isInRange(toArabic(num1)) || !isInRange(toArabic(num2)) {
+				fmt.Println("Ошибка: число выходит за пределы допустимого диапазона")
+				return
+			}
+
+			result := arithmeticOperation(toArabic(num1), toArabic(num2), operator)
+
+			if !isArabic {
+				if isPositive(result) {
+					fmt.Printf("Результат: %v\n\n", toRoman(result))
+				} else {
+					fmt.Println("Ошибка: результат меньше I")
+					return
+				}
+			} else {
+				fmt.Printf("Результат: %v\n\n", result)
+			}
+		}
 	}
 }
