@@ -75,6 +75,10 @@ func arabicToRoman(arabic int) string {
 	return result
 }
 
+func isInRange(number int) bool {
+	return number >= 1 && number <= 10
+}
+
 func main() {
 	fmt.Print("Введите строку: ")
 
